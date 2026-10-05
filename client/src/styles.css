@@ -1,0 +1,1142 @@
+/* ============================================================
+   Beit Jan Smart Library - Design tokens & global styles
+   Direction: RTL Hebrew. Fonts: Rubik (display) / Heebo (body)
+   ============================================================ */
+
+:root {
+  /* Palette: deep library green + warm sand, high contrast */
+  --ink:        #1D2B26;   /* near-black green - main text */
+  --ink-soft:   #51625B;   /* secondary text */
+  --paper:      #F7F6F2;   /* app background */
+  --card:       #FFFFFF;
+  --line:       #E3E1D8;
+  --green:      #1F6E52;   /* primary - library green */
+  --green-dark: #164F3B;
+  --green-soft: #E4F0EA;
+  --amber:      #B97C24;   /* warnings / overdue accents */
+  --red:        #A93B2E;   /* errors */
+  --red-soft:   #F7E8E5;
+
+  --radius: 12px;
+  --shadow: 0 1px 3px rgba(29, 43, 38, 0.08), 0 4px 16px rgba(29, 43, 38, 0.06);
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root { height: 100%; }
+
+body {
+  margin: 0;
+  font-family: 'Heebo', system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .brand-name {
+  font-family: 'Rubik', 'Heebo', sans-serif;
+}
+
+button { font-family: inherit; cursor: pointer; }
+
+/* ---------- Login ---------- */
+.login-wrap {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background:
+    radial-gradient(1200px 600px at 85% -10%, var(--green-soft), transparent 60%),
+    var(--paper);
+}
+
+.login-card {
+  width: 100%;
+  max-width: 520px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  padding: 36px 32px;
+}
+
+.login-head { text-align: center; margin-bottom: 24px; }
+.login-logo { font-size: 40px; }
+.login-head h1 { margin: 8px 0 4px; font-size: 24px; letter-spacing: 0.2px; }
+.login-sub { margin: 0; color: var(--ink-soft); font-size: 14px; }
+
+.role-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.role-card {
+  display: grid;
+  gap: 2px;
+  justify-items: center;
+  padding: 14px 8px;
+  background: var(--paper);
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+  transition: border-color 0.15s, background 0.15s;
+}
+.role-card:hover { border-color: var(--green); }
+.role-card.selected {
+  background: var(--green-soft);
+  border-color: var(--green);
+}
+.role-card:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+}
+.role-icon { font-size: 22px; }
+.role-label { font-weight: 600; font-size: 14px; }
+.role-desc { font-size: 11px; color: var(--ink-soft); text-align: center; }
+
+.login-form { display: grid; gap: 14px; }
+.login-form label {
+  display: grid;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-soft);
+}
+.login-form input {
+  padding: 11px 14px;
+  font-size: 15px;
+  font-family: inherit;
+  border: 1.5px solid var(--line);
+  border-radius: 10px;
+  background: var(--card);
+  color: var(--ink);
+}
+.login-form input:focus {
+  outline: none;
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px var(--green-soft);
+}
+
+.form-error {
+  background: var(--red-soft);
+  color: var(--red);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 14px;
+}
+
+.btn-primary {
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  background: var(--green);
+  border: none;
+  border-radius: 10px;
+  transition: background 0.15s;
+}
+.btn-primary:hover:not(:disabled) { background: var(--green-dark); }
+.btn-primary:disabled { opacity: 0.6; cursor: default; }
+
+/* ---------- App shell ---------- */
+.app-shell {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  min-height: 100vh;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  background: var(--card);
+  border-inline-end: 1px solid var(--line);
+  padding: 20px 14px;
+  gap: 18px;
+}
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 8px;
+}
+.brand-icon { font-size: 26px; }
+.brand-name { font-weight: 700; font-size: 16px; }
+.brand-sub { font-size: 12px; color: var(--ink-soft); }
+
+.sidebar-nav { display: grid; gap: 4px; flex: 1; }
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 14.5px;
+  color: var(--ink);
+  text-decoration: none;
+}
+.nav-item:hover { background: var(--paper); }
+.nav-item.active {
+  background: var(--green-soft);
+  color: var(--green-dark);
+  font-weight: 600;
+}
+.nav-item.disabled {
+  color: var(--ink-soft);
+  opacity: 0.65;
+  cursor: default;
+}
+.soon-tag {
+  margin-inline-start: auto;
+  font-size: 10px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 1px 8px;
+}
+
+.sidebar-user {
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+  display: grid;
+  gap: 2px;
+}
+.user-name { font-weight: 600; font-size: 14px; }
+.user-role { font-size: 12px; color: var(--ink-soft); }
+
+.btn-ghost {
+  margin-top: 8px;
+  padding: 8px;
+  font-size: 13px;
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--ink-soft);
+}
+.btn-ghost:hover { border-color: var(--red); color: var(--red); }
+
+/* ---------- Pages ---------- */
+.main-content { padding: 32px 36px; }
+
+.page-head h1 { margin: 0 0 4px; font-size: 24px; }
+.page-sub { margin: 0 0 24px; color: var(--ink-soft); }
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: var(--shadow);
+}
+.stat-value { font-size: 28px; font-weight: 700; font-family: 'Rubik', sans-serif; }
+.stat-label { font-size: 14px; margin-top: 2px; }
+.stat-hint { font-size: 12px; color: var(--ink-soft); margin-top: 6px; }
+
+.phase-note {
+  background: var(--green-soft);
+  border: 1px solid var(--green);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  font-size: 14px;
+  color: var(--green-dark);
+}
+
+.boot-screen {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  color: var(--ink-soft);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 820px) {
+  .app-shell { grid-template-columns: 1fr; }
+  .sidebar {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    border-inline-end: none;
+    border-bottom: 1px solid var(--line);
+  }
+  .sidebar-nav { display: flex; flex-wrap: wrap; }
+  .main-content { padding: 20px; }
+  .role-grid { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+
+/* ---------- Phase 2: Loan & Return flows ---------- */
+.steps-bar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+.step-dot {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  color: var(--ink-soft);
+}
+.step-dot.now  { background: var(--green-soft); border-color: var(--green); color: var(--green-dark); font-weight: 600; }
+.step-dot.done { background: var(--green); border-color: var(--green); color: #fff; }
+
+.panel {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 22px;
+  display: grid;
+  gap: 16px;
+  max-width: 640px;
+}
+
+.inline-form { display: flex; gap: 10px; }
+.inline-form input {
+  flex: 1;
+  padding: 11px 14px;
+  font-size: 15px;
+  font-family: inherit;
+  border: 1.5px solid var(--line);
+  border-radius: 10px;
+}
+.inline-form input:focus {
+  outline: none;
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px var(--green-soft);
+}
+.inline-form .btn-primary { padding: 11px 22px; font-size: 15px; }
+
+.candidate-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.candidate {
+  width: 100%;
+  text-align: start;
+  padding: 10px 14px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  font-size: 14px;
+}
+.candidate:hover { border-color: var(--green); }
+
+.eligibility {
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 14px;
+}
+.eligibility.ok      { background: var(--green-soft); color: var(--green-dark); }
+.eligibility.blocked { background: var(--red-soft); color: var(--red); }
+.debt-line { margin: 4px 0 0; font-size: 13px; }
+
+.book-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 14px 18px;
+}
+.book-card h3 { margin: 0 0 4px; }
+.book-card p  { margin: 4px 0; font-size: 14px; color: var(--ink-soft); }
+
+.status-badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.s-available { background: var(--green-soft); color: var(--green-dark); }
+.s-loaned    { background: #EFEBFB; color: #5B4AB7; }
+.s-reserved  { background: #FDF3E3; color: var(--amber); }
+.s-damaged, .s-overdue { background: var(--red-soft); color: var(--red); }
+
+.condition-set { border: 1px solid var(--line); border-radius: 10px; padding: 12px 16px 16px; }
+.condition-set legend { font-size: 13px; font-weight: 600; color: var(--ink-soft); padding: 0 6px; }
+.condition-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; }
+.condition-opt {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  border: 1.5px solid var(--line);
+  border-radius: 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.condition-opt.selected { background: var(--green-soft); border-color: var(--green); }
+.condition-opt input { accent-color: var(--green); }
+
+.notes-label { display: grid; gap: 6px; font-size: 13px; font-weight: 500; color: var(--ink-soft); }
+.notes-label input {
+  padding: 10px 14px;
+  border: 1.5px solid var(--line);
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.warn-note {
+  background: #FDF3E3;
+  border: 1px solid var(--amber);
+  color: #7A5215;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 14px;
+}
+
+.success-panel { text-align: center; justify-items: center; }
+.success-icon { font-size: 44px; }
+.success-panel h2 { margin: 0; }
+.success-panel p { margin: 2px 0; }
+.shelf-tag {
+  background: var(--green-soft);
+  color: var(--green-dark);
+  padding: 2px 12px;
+  border-radius: 8px;
+  font-family: 'Rubik', sans-serif;
+}
+.hint { font-size: 13px; color: var(--ink-soft); }
+
+.stat-card.warn .stat-value { color: var(--red); }
+
+/* ---------- Phase 3: Search, Reservations, Inventory ---------- */
+.search-bar { display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; }
+.search-bar.grow { flex: 1; margin-bottom: 0; }
+.search-bar input {
+  flex: 1; min-width: 200px;
+  padding: 11px 14px; font-size: 15px; font-family: inherit;
+  border: 1.5px solid var(--line); border-radius: 10px;
+}
+.search-bar input:focus { outline: none; border-color: var(--green); box-shadow: 0 0 0 3px var(--green-soft); }
+.search-bar select {
+  padding: 11px 14px; font-size: 14px; font-family: inherit;
+  border: 1.5px solid var(--line); border-radius: 10px; background: var(--card);
+}
+
+.ok-note {
+  background: var(--green-soft); color: var(--green-dark);
+  border-radius: 10px; padding: 10px 14px; font-size: 14px; margin-bottom: 12px;
+}
+.empty-note {
+  background: var(--card); border: 1px dashed var(--line); border-radius: var(--radius);
+  padding: 28px; text-align: center; color: var(--ink-soft);
+}
+
+.book-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 14px;
+}
+.book-tile {
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+  box-shadow: var(--shadow); padding: 16px; display: grid; gap: 6px; align-content: start;
+}
+.book-tile-head { display: flex; justify-content: space-between; align-items: start; gap: 8px; }
+.book-tile h3 { margin: 0; font-size: 16px; }
+.book-tile p { margin: 0; font-size: 13.5px; color: var(--ink-soft); }
+.btn-primary.sm { padding: 8px 14px; font-size: 13.5px; margin-top: 6px; justify-self: start; }
+.btn-ghost.sm { padding: 5px 12px; font-size: 12.5px; margin-top: 0; }
+.btn-ghost.danger:hover { border-color: var(--red); color: var(--red); }
+
+.table-wrap { overflow-x: auto; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+.data-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.data-table th {
+  text-align: start; padding: 12px 16px; font-size: 12.5px;
+  color: var(--ink-soft); border-bottom: 1px solid var(--line);
+  background: var(--paper);
+}
+.data-table td { padding: 12px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.data-table tr:last-child td { border-bottom: none; }
+.row-actions { display: flex; gap: 6px; flex-wrap: wrap; }
+
+.toolbar { display: flex; gap: 10px; margin-bottom: 16px; align-items: start; flex-wrap: wrap; }
+.add-book-form { max-width: none; margin-bottom: 18px; }
+.add-book-form h3 { margin: 0; }
+.form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+.form-grid label { display: grid; gap: 5px; font-size: 13px; font-weight: 500; color: var(--ink-soft); }
+.form-grid input, .form-grid select {
+  padding: 10px 12px; font-size: 14px; font-family: inherit;
+  border: 1.5px solid var(--line); border-radius: 9px;
+}
+.form-grid input:focus, .form-grid select:focus { outline: none; border-color: var(--green); }
+
+/* ---------- Phase 4 ---------- */
+.isbn-row { display: flex; gap: 8px; align-items: center; }
+.isbn-row input { flex: 1; }
+.status-filter {
+  padding: 10px 14px; font-size: 14px; font-family: inherit;
+  border: 1.5px solid var(--line); border-radius: 10px; background: var(--card);
+}
+
+/* ---------- Phase 5: Reports, Settings, Students ---------- */
+.report-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+}
+.report-grid .panel { max-width: none; gap: 10px; }
+.report-grid h3 { margin: 0 0 6px; font-size: 16px; }
+
+.bar-row { display: grid; grid-template-columns: 90px 1fr 34px; align-items: center; gap: 10px; }
+.bar-label { font-size: 13px; color: var(--ink-soft); }
+.bar-track { background: var(--paper); border-radius: 20px; height: 14px; overflow: hidden; }
+.bar-fill { background: var(--green); height: 100%; border-radius: 20px; transition: width 0.4s; }
+.bar-value { font-size: 13px; font-weight: 600; text-align: start; }
+
+.top-books { margin: 0; padding-inline-start: 20px; display: grid; gap: 8px; font-size: 14px; }
+
+.settings-form { max-width: 720px; }
+
+.debts-cell { background: var(--paper); }
+.debt-item {
+  display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  background: var(--card); border: 1px solid var(--line); border-radius: 10px;
+  padding: 10px 14px; margin: 6px 0; font-size: 14px;
+}
+.debt-item.settled { opacity: 0.65; }
+.settle-form { display: flex; gap: 6px; align-items: center; }
+.settle-form input {
+  padding: 8px 12px; font-size: 13px; font-family: inherit;
+  border: 1.5px solid var(--line); border-radius: 8px; min-width: 220px;
+}
+
+
+
+/* ---------- Live Monitor + clickable dashboard cards ---------- */
+.stat-card.clickable {
+  cursor: pointer;
+  text-align: right;
+  font-family: inherit;
+  position: relative;
+  transition: border-color 0.15s, transform 0.1s;
+}
+.stat-card.clickable:hover {
+  border-color: var(--green);
+  transform: translateY(-1px);
+}
+.stat-arrow {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  color: var(--ink-soft);
+  font-size: 14px;
+  opacity: 0.6;
+}
+.stat-card.clickable:hover .stat-arrow { opacity: 1; color: var(--green); }
+
+.filter-chip {
+  padding: 7px 16px;
+  font-size: 13.5px;
+  background: var(--card);
+  border: 1.5px solid var(--line);
+  border-radius: 20px;
+  color: var(--ink-soft);
+}
+.filter-chip:hover { border-color: var(--green); }
+.filter-chip.active {
+  background: var(--green);
+  border-color: var(--green);
+  color: #fff;
+  font-weight: 600;
+}
+
+/* ---------- Idle timeout overlay ---------- */
+.idle-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: grid;
+  place-items: center;
+  z-index: 100;
+}
+.idle-box {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 32px 28px;
+  max-width: 340px;
+  text-align: center;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+}
+.idle-icon { font-size: 40px; margin-bottom: 8px; }
+.idle-box h2 { margin: 4px 0 8px; }
+.idle-box p { margin: 0 0 18px; color: var(--ink-soft); font-size: 14px; }
+.idle-box .btn-primary { width: 100%; }
+
+.login-notice {
+  background: var(--green-soft);
+  color: var(--green-dark);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 13.5px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+/* ---------- Report type presets ---------- */
+.report-filters select { min-width: 130px; }
+.debts-report-panel { max-width: none; }
+.debts-report-panel .table-wrap { margin-top: 4px; box-shadow: none; border: 1px solid var(--line); }
+
+/* ---------- Dark mode ---------- */
+:root[data-theme="dark"] {
+  --ink:        #E8EDE9;
+  --ink-soft:   #9FAEA6;
+  --paper:      #121815;
+  --card:       #1B2420;
+  --line:       #2E3A34;
+  --green:      #3FA37A;
+  --green-dark: #2E7C5C;
+  --green-soft: #1E332A;
+  --amber:      #D9A44E;
+  --red:        #E0685A;
+  --red-soft:   #3A211D;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.35), 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+/* The login screen's decorative gradient needs a darker base in dark mode
+   (it blends --green-soft into --paper, both of which change above, but
+   the blend ratio needs a touch more contrast to stay visible) */
+:root[data-theme="dark"] .login-wrap {
+  background:
+    radial-gradient(1200px 600px at 85% -10%, var(--green-soft), transparent 60%),
+    var(--paper);
+}
+
+.theme-toggle { margin-top: 8px; }
+
+/* ---------- Global form-control fix ----------
+   Many individual input/select rules across the app only set
+   border/padding/font and never set an explicit text/background color,
+   relying on the browser's default (usually black-on-white). That default
+   doesn't adapt to dark mode, so text silently becomes unreadable
+   (dark text on a dark background). This single rule supplies the
+   missing fallback everywhere at once. */
+input, select, textarea {
+  color: var(--ink);
+  background-color: var(--card);
+}
+select option {
+  color: var(--ink);
+  background-color: var(--card);
+}
+
+/* ---------- Global button-color fix ----------
+   Same root cause as the input/select fix: <button> elements don't inherit
+   text color from the page by default either. Several buttons across the
+   app (dashboard stat cards, role-selector cards, student search results)
+   only set background/border and never an explicit color, so they fell
+   back to the browser default and stayed dark in dark mode.
+   Buttons that DO set their own color (.btn-primary, .btn-ghost, etc.) use
+   a class selector, which outranks this plain-element rule, so they are
+   unaffected. */
+button {
+  color: var(--ink);
+}
+
+/* ---------- Student detail modal ---------- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: grid;
+  place-items: center;
+  z-index: 90;
+  padding: 20px;
+}
+.modal-box {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 26px 24px;
+  max-width: 480px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+.modal-close {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+.modal-close:hover { color: var(--red); }
+.modal-head { margin-bottom: 6px; padding-inline-end: 26px; }
+.modal-head h2 { margin: 0 0 2px; }
+.modal-section {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+.modal-section h4 { margin: 0 0 8px; font-size: 14px; color: var(--ink-soft); }
+.modal-section p { margin: 4px 0; font-size: 14px; }
+.modal-loan-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--line);
+}
+.modal-loan-row:last-child { border-bottom: none; }
+.modal-loan-due {
+  text-align: end;
+  font-size: 13px;
+  display: grid;
+  gap: 4px;
+  justify-items: end;
+  flex-shrink: 0;
+}
+
+.student-link {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  color: var(--green);
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  font-family: inherit;
+  font-size: inherit;
+}
+.student-link:hover { color: var(--green-dark); }
+
+/* ---------- AI Assistant widget (draggable, dark-mode safe) ---------- */
+.assistant-fab {
+  position: fixed;
+  width: 54px; height: 54px;
+  border-radius: 50%;
+  border: none;
+  background: var(--green);
+  color: #fff;
+  font-size: 24px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.3);
+  z-index: 60;
+  cursor: grab;
+  touch-action: none;
+  transition: background 0.15s;
+}
+.assistant-fab:hover { background: var(--green-dark); }
+.assistant-fab.dragging {
+  cursor: grabbing;
+  transition: none;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.4);
+}
+
+.assistant-panel {
+  position: fixed;
+  width: min(360px, calc(100vw - 44px));
+  height: min(480px, calc(100vh - 130px));
+  background: var(--card);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.35);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 60;
+}
+
+.assistant-head {
+  background: var(--green);
+  color: #fff;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+}
+.assistant-sub { font-size: 12px; font-weight: 400; opacity: 0.85; }
+
+.assistant-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.bubble {
+  max-width: 85%;
+  padding: 9px 13px;
+  border-radius: 14px;
+  font-size: 14px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  color: var(--ink);
+}
+.bubble.user {
+  align-self: flex-end;
+  background: var(--green);
+  color: #fff;
+  border-end-start-radius: 4px;
+}
+.bubble.assistant {
+  align-self: flex-start;
+  background: var(--card);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-end-end-radius: 4px;
+}
+.bubble.typing { color: var(--ink-soft); font-style: italic; }
+
+.suggestions { display: flex; flex-direction: column; gap: 6px; margin-top: 6px; }
+.suggestion {
+  text-align: start;
+  padding: 8px 12px;
+  font-size: 13px;
+  background: var(--green-soft);
+  color: var(--green-dark);
+  border: 1px solid var(--green);
+  border-radius: 10px;
+}
+.suggestion:hover { background: var(--green); color: #fff; }
+
+.assistant-input {
+  display: flex;
+  gap: 8px;
+  padding: 10px;
+  border-top: 1px solid var(--line);
+  background: var(--card);
+}
+.assistant-input input {
+  flex: 1;
+  padding: 10px 13px;
+  font-size: 14px;
+  font-family: inherit;
+  border: 1.5px solid var(--line);
+  border-radius: 10px;
+  color: var(--ink);
+  background: var(--paper);
+}
+.assistant-input input:focus { outline: none; border-color: var(--green); }
+
+/* ---------- Fix: low-contrast green text in dark mode ----------
+   --green-dark served two different jobs: (1) text color paired with
+   --green-soft backgrounds (suggestion chips, "ok" banners, active nav
+   item...), and (2) the darker shade for button hover/press states.
+   In light mode both jobs wanted the same dark green, so one variable
+   worked. In dark mode they need OPPOSITE brightness - job 1 needs a
+   BRIGHT green to read on a dark background, job 2 still needs a darker
+   shade for the "pressed" feel - which is why text using --green-dark
+   became unreadable. Fix: --green-press takes over job 2, freeing
+   --green-dark to be bright in dark mode for job 1. */
+:root {
+  --green-press: #164F3B;
+}
+:root[data-theme="dark"] {
+  --green-dark: #7FE0B3;
+  --green-press: #2E7C5C;
+}
+.btn-primary:hover:not(:disabled) { background: var(--green-press); }
+.assistant-fab:hover { background: var(--green-press); }
+
+/* ============================================================
+   RESPONSIVE / MOBILE
+   The app was built desktop-first (fixed 250px sidebar, wide tables,
+   multi-column grids). These rules adapt it for tablets and phones.
+   ============================================================ */
+
+/* ---- Tablet and below ---- */
+@media (max-width: 900px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
+
+  /* Sidebar becomes a horizontal top bar */
+  .sidebar {
+    flex-direction: column;
+    border-inline-end: none;
+    border-bottom: 1px solid var(--line);
+    padding: 12px;
+    gap: 10px;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  .sidebar-brand { padding: 0 4px; }
+  .brand-name { font-size: 15px; }
+
+  .sidebar-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    flex: none;
+  }
+  .nav-item {
+    padding: 8px 12px;
+    font-size: 13.5px;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  .sidebar-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    border-top: 1px solid var(--line);
+    padding-top: 10px;
+  }
+  .sidebar-user .user-name { font-size: 13px; }
+  .sidebar-user .user-role { font-size: 12px; }
+  .sidebar-user .btn-ghost {
+    margin-top: 0;
+    margin-inline-start: auto;
+    padding: 6px 12px;
+    font-size: 12.5px;
+  }
+  .theme-toggle { margin-inline-start: 0 !important; }
+
+  .main-content { padding: 18px 16px; }
+  .report-grid { grid-template-columns: 1fr; }
+}
+
+/* ---- Phones ---- */
+@media (max-width: 620px) {
+  .page-head h1 { font-size: 20px; }
+  .page-sub { font-size: 13.5px; }
+
+  /* Stat cards: 2 per row instead of 4 */
+  .stat-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .stat-card { padding: 14px; }
+  .stat-value { font-size: 22px; }
+  .stat-label { font-size: 12.5px; }
+  .stat-arrow { top: 10px; left: 10px; font-size: 12px; }
+
+  /* Forms and toolbars stack vertically */
+  .search-bar,
+  .inline-form,
+  .toolbar,
+  .report-filters,
+  .notify-compose,
+  .settle-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .search-bar input,
+  .search-bar select,
+  .search-bar button,
+  .inline-form input,
+  .inline-form button,
+  .report-filters input,
+  .report-filters select,
+  .report-filters button,
+  .notify-compose input,
+  .notify-compose select,
+  .notify-compose button,
+  .settle-form input,
+  .settle-form button {
+    width: 100%;
+  }
+  .report-filters label { width: 100%; }
+  .toolbar { gap: 8px; }
+  .toolbar .filter-chip { width: 100%; text-align: center; }
+
+  .form-grid { grid-template-columns: 1fr; }
+  .book-grid { grid-template-columns: 1fr; }
+  .role-grid { grid-template-columns: 1fr; gap: 8px; }
+  .role-card { flex-direction: row; justify-items: start; text-align: start; }
+
+  .login-card { padding: 24px 18px; }
+  .login-head h1 { font-size: 20px; }
+
+  /* Tables scroll horizontally rather than squashing unreadably */
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .data-table { min-width: 620px; font-size: 13px; }
+  .data-table th, .data-table td { padding: 10px 12px; }
+  .row-actions { flex-direction: column; align-items: stretch; }
+  .row-actions .btn-ghost { width: 100%; }
+
+  .debt-item { flex-direction: column; align-items: stretch; gap: 8px; }
+  .modal-loan-row { flex-direction: column; align-items: stretch; gap: 6px; }
+  .modal-loan-due { text-align: start; justify-items: start; }
+
+  .steps-bar { gap: 6px; }
+  .step-dot { font-size: 12.5px; padding: 6px 12px; }
+
+  .panel { padding: 16px; }
+  .bar-row { grid-template-columns: 70px 1fr 30px; gap: 8px; }
+  .bar-label { font-size: 12px; }
+}
+
+/* ---------- Assistant: mobile fullscreen + rich text ---------- */
+.assistant-close {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 0 4px;
+  line-height: 1;
+}
+.assistant-close:hover { opacity: 0.8; }
+
+.assistant-screen-link {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  font-weight: 700;
+  color: var(--green-dark);
+  text-decoration: underline;
+  cursor: pointer;
+}
+.assistant-screen-link:hover { opacity: 0.8; }
+
+/* On phones the floating panel is unusable at 360px wide next to a
+   dragged button, so it becomes a proper fullscreen sheet instead. */
+.assistant-fab.mobile {
+  inset-inline-end: 16px;
+  inset-block-end: 16px;
+  left: auto;
+  top: auto;
+  cursor: pointer;
+  width: 58px;
+  height: 58px;
+}
+.assistant-panel.mobile {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  border-radius: 0;
+  border: none;
+  z-index: 120;
+}
+.assistant-panel.mobile .assistant-head { padding: 16px; font-size: 16px; }
+.assistant-panel.mobile .assistant-body { padding: 16px; }
+.assistant-panel.mobile .bubble { max-width: 90%; font-size: 15px; }
+.assistant-panel.mobile .assistant-input { padding: 12px; }
+.assistant-panel.mobile .assistant-input input { font-size: 16px; } /* 16px stops iOS auto-zoom */
+
+/* ---------- Theme toggle on the login screen ---------- */
+.login-theme-toggle {
+  position: fixed;
+  top: 16px;
+  inset-inline-end: 16px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--card);
+  font-size: 18px;
+  cursor: pointer;
+  z-index: 10;
+}
+.login-theme-toggle:hover { border-color: var(--green); }
+
+/* ---------- Assistant widget: mobile drag fix ----------
+   The earlier mobile rule pinned the button to a fixed corner with
+   inset-inline-end/inset-block-end and `left/top: auto`, which overrode the
+   dragged position and made it un-movable on phones. The button now uses
+   its dragged left/top coordinates on every screen size, exactly like on
+   desktop; only the panel stays fullscreen on mobile. */
+.assistant-fab.mobile {
+  inset-inline-end: auto;
+  inset-block-end: auto;
+}
+@media (max-width: 620px) {
+  .assistant-fab {
+    width: 58px;
+    height: 58px;
+    font-size: 26px;
+  }
+}
+
+/* ---------- Root fix: stop horizontal page overflow on phones ----------
+   Tables carry a min-width so they stay readable, and .table-wrap scrolls
+   them horizontally. But .main-content is a grid item, and grid items
+   default to min-width:auto - which forbids them from shrinking below
+   their content. So the 620px table pushed .main-content (and the whole
+   page) wider than the phone screen. Mobile browsers respond to that by
+   zooming the entire page out to fit, which breaks every position:fixed
+   element: the chat button couldn't reach the edge, the panel got clipped,
+   and after navigating to a page with a table the chat "exploded".
+   Allowing the grid item to shrink keeps the scroll inside .table-wrap. */
+html, body { overflow-x: hidden; max-width: 100%; }
+.app-shell { max-width: 100%; overflow-x: hidden; }
+.main-content { min-width: 0; max-width: 100%; }
+
+/* Fullscreen chat on phones sizes to the real screen, not 100vw (which
+   can exceed the visible width once a scrollbar or zoom is involved). */
+.assistant-panel.mobile {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  border-radius: 0;
+  border: none;
+  z-index: 120;
+}
+
+/* Desktop/tablet panel: width/height now come from inline style (clamped
+   in JS), so drop the CSS min() sizing that could disagree with it. */
+.assistant-panel:not(.mobile) {
+  width: auto;
+  height: auto;
+}
+
+/* ---------- Assistant: small-window default + fullscreen toggle ----------
+   Geometry (left/top/width/height) is now always set inline by JS from the
+   visible viewport, so the CSS must not fight it: no inset/width/height
+   here. The only per-mode differences are cosmetic. */
+.assistant-panel.mobile {
+  inset: auto;
+  width: auto;
+  height: auto;
+  max-width: none;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  z-index: 120;
+}
+.assistant-panel.mobile.expanded {
+  border-radius: 0;
+  border: none;
+}
+
+.assistant-head-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.assistant-head-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 4px 8px;
+  line-height: 1;
+  border-radius: 8px;
+}
+.assistant-head-btn:hover { background: rgba(255, 255, 255, 0.15); }
+
+/* ---------- Assistant: single-star emphasis + SVG header icons ---------- */
+/* Slanted Hebrew is hard to read; render *emphasis* as a weight change instead. */
+.bubble em { font-style: normal; font-weight: 600; }
+.assistant-head-btn svg { display: block; }
+.assistant-head-btn { display: inline-flex; align-items: center; justify-content: center; min-width: 32px; min-height: 32px; }
